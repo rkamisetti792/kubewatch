@@ -11,7 +11,7 @@ ADD . "$GOPATH/src/github.com/bitnami-labs/kubewatch"
 RUN cd "$GOPATH/src/github.com/bitnami-labs/kubewatch" && \
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a --installsuffix cgo --ldflags="-s" -o /kubewatch
 
-FROM alpine:3.4
+FROM alpine:3
 RUN apk add --update ca-certificates
 
 COPY --from=builder /kubewatch /bin/kubewatch
